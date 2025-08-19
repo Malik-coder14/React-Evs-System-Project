@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import Products from "./components/Products";
 import Header from "./components/includes/Header";
 import Test from "./components/Test";
+import Create from "./components/Create";
 
  function App() {
     return (
@@ -20,6 +21,7 @@ import Test from "./components/Test";
                 <Route path= "/products" element = {<Products/>}/>
                 <Route path= "/contact" element = {<Contact/>}/>
                 <Route path = "/test" element = {<Test/>} />
+                <Route path = "/create" element = {<Create/>} />
            </Routes>   
             </div>         
           
