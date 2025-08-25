@@ -16,7 +16,7 @@ const Test = () => {
                 {/* In above input field we use Javascript function onKeyUp, so that what we type in field should show on page */}
                        {/* {title} */}
                      {title == null ? (
-                        <div> Input has not text </div>
+                        <div> Input has no text </div>
                      ) : (
                         <div> {title} </div>
                      )}  

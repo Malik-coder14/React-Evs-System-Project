@@ -1,12 +1,15 @@
 // The extension of file jsx, is a special feateure of React, 
 // .jsx extension allow us to write html in JavaScript/
-import { useState} from "react";
+import { useState, useEffect} from "react";
 
 const Create = () => {
 
     const [Name, setName] = useState();
     const [Price, setPrice ] = useState();
     const [Quantity, setQuantity ] = useState();
+
+    const [Products, setProduct] = useState();
+
 
     const productData = (e) => {
         e.preventDefault();        
@@ -17,6 +20,25 @@ const Create = () => {
         }
         console.log(product);
     }
+    const FetchProduct = async () => {
+
+        try {
+
+            const response = await fetch('https://68aaced2909a5835049d0b45.mockapi.io/Test');
+            const data = await response.json();
+            setProduct(data);
+            console.log(Products);
+            
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+    useEffect(function(){
+        FetchProduct();
+
+    });
+
     return (
        <div className="container mt-5">
         <div className="row">
@@ -61,6 +83,51 @@ const Create = () => {
                     <button type="submit" className="btn btn-primary w-100">Create</button>
                 </form>
             </div>
+        </div>
+
+        <div className= "col-lg-8">
+            <div className = "card">
+                <div className="card-header">
+                    <i className="fa fa-list"></i> All Products
+                </div>
+                    <table className= "table-borderd table-hover table-stripped">
+                    <thead> 
+                       {
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Price </th>
+                            <th> Quantity </th>
+                        </tr> 
+                    }
+                    </thead>
+                    <tbody>
+                        { Products.length > 0 {
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Price </th>
+                            <th> Quantity </th>
+                        </tr> 
+                        } : (
+                             
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Price </th>
+                            <th> Quantity </th>
+                        </tr> 
+                    
+                        ) 
+                    }
+                    
+                        
+                        </tbody> 
+
+                    </table>
+
+            </div>
+
         </div>
     </div>
 </div>
